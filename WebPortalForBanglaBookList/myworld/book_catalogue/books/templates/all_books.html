@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Books</h1>
+
+    <!-- <ul>
+        {% for abook in allbooks %}
+        <li>{{ abook.bookName }} {{ abook.authName }} || {{abook.aboutOfBook}}</li>
+        {% endfor %}
+    </ul> -->
+
+    <table>
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        
+            {% for abook in allbooks %}
+            <!--<li>{{ abook.bookName }} {{ abook.authName }} || {{abook.aboutOfBook}}</li>-->
+            <tr>
+                <td>{{ abook.bookName }}</td>
+                <td>{{ abook.authName }}</td>
+                <td>{{abook.aboutOfBook}}</td>
+            </tr>
+
+            {% endfor %}
+        
+    </table>
+
+</body>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    td {
+        background-color: #eee;
+    }
+
+    th {
+        background-color: #009;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+</html>

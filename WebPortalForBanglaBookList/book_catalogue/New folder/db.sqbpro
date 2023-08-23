@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="D:/Sahed_works/WebPortalForBanglaBookList/book_catalogue/book_catalogue/db.sqlite3" readonly="0" foreign_keys="" case_sensitive_like="" temp_store="" wal_autocheckpoint="" synchronous=""/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2872"/><column_width id="4" width="0"/></tab_structure><tab_browse><current_table name="0,0:"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">--delete from dummy_books;
+--drop table dummy_books;
+--SELECT* from dummy_books;
+
+-- INSERT into books_book
+-- select * from dummy_books;
+
+ --select count(id),max(id),min(id) from books_book;
+ 
+ select * from books_book limit 10;
+-- 
+--  select * from dummy_books ORDER by id asc;
+--  
+--  select * from dummy_books t1 inner join dummy_books t2 on t1.id = t2.id where t1.name != t2.name;
+
+--delete from dummy_books where id = 10 and rating = 3.79;
+
+--delete from dummy_books where id = 11 and rating = 3.62;</sql><current_tab id="0"/></tab_sql></sqlb_project>

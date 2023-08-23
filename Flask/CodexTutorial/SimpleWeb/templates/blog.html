@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>Blog</title>
+        
+        {% block content %}
+            <h2>Welcome to Blogs</h2>
+            <p>Hi! this is {{authName}} kol </p>
+            {%if sunny%}
+                <h2>weather is good sun</h2>
+            {%elif not sunny%}
+                <h2>weather NO sun</h2>
+            {%endif%}
+            <h1>Have some books</h1>
+            {%for aBook in books%}
+                <h2>{{aBook.name}}</h2>
+                <h3>{{aBook.auth}}</h3>
+                <h2>-------------</h2>
+            {%endfor%}
+        {% endblock %}
+
+    </head>   
+</html>

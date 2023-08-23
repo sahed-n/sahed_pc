@@ -1,0 +1,15 @@
+Manager: 
+snigdho_manager@gmail.com
+1234567890
+
+Linguist:
+Shova.sas@dream71.com
+123456789
+
+Collector:
+chompa@gmail.com
+1234567890
+
+Validator
+naidu@gmail.com
+123456789
