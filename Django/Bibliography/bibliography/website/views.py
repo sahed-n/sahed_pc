@@ -17,6 +17,7 @@ def processRecords(records):
         #encoded_data = base64.b64encode(secret_pad_left+record.id+secret_pad_right.encode()).decode()
         
         record["id"] = base64.b64encode((secret_pad_left+str(record["id"])+secret_pad_right).encode()).decode()
+        #record["id"] = str(record["id"])+"a"
 
 def decodePK(encoded_data):
     decoded_data = base64.b64decode(encoded_data).decode()
@@ -26,11 +27,11 @@ def decodePK(encoded_data):
 def home(req):
 
     #records = Record.objects.all(is_deleted=False)
-    records = list(Record.objects.filter(is_deleted=False).values())
-    processRecords(records)
+    # records = list(Record.objects.filter(is_deleted=False).values())
+    # processRecords(records)
 
     #return HttpResponse({"records":records})
-    return JsonResponse(records, encoder=DjangoJSONEncoder, safe=False)
+    #return JsonResponse(records, encoder=DjangoJSONEncoder, safe=False)
 
     if req.method == 'POST':
         username = req.POST['username']
@@ -47,6 +48,8 @@ def home(req):
             messages.success(req, "There is an error!")
             return redirect('home')
     else:
+        records = list(Record.objects.filter(is_deleted=False).values())
+        processRecords(records)
         return render(req,"home.html",{'records':records})
 
 # def login_user(req):
@@ -77,11 +80,18 @@ def register_user(req):
 
 def customer_record(req, pk):
     if req.user.is_authenticated:
+        pk=decodePK(pk)
+        pk = pk[3:]
+        pk = pk[:-3]
+        print("PPPPPPPPPPPPPPP "+str(pk))
         customer_record = Record.objects.get(id=pk)
         return render(req,"record.html",{'customer_record':customer_record})
     else:
         messages.success(req,"Log in needed to view that page")
         return redirect('home')
+    
+def add_record(req):
+    return render(req,"add_record.html",{})
     
 def delete_record(req, pk):
     if req.user.is_authenticated:
