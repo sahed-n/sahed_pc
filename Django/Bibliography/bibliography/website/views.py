@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, AddRecordForm
 from .models import Record
 import base64
 from django.http import HttpResponse
@@ -116,4 +116,17 @@ def delete_record(req, pk):
         messages.success(req,"Action requires log in")
     
     return redirect('home')
-        
+
+def add_record(req):
+    form = AddRecordForm(req.POST or None)
+
+    if req.user.is_authenticated:
+        if req.method == "POST":
+            if form.is_valid():
+                add_record = form.save()
+                messages.success(req,"Record Added...")
+                return redirect('home')
+        return render(req, 'add_record.html', {'form':form})
+    else:
+        messages.success(req,"Action requires log in")
+        return redirect('home')
